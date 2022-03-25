@@ -25,6 +25,20 @@ class ContaCorrente{
             this._saldo += valor;
         }
     }
+    // funcao para retornar o saldo
+    get saldo(){
+        return this._saldo;
+    }   
+    // criar um metodo para transferir saldo
+    transferir(valor, conta){
+        if(this._saldo >= valor){
+            this._saldo -= valor;
+            conta._saldo += valor;
+            return valor;
+        }else{
+            return 0;
+        }
+    }    
 }
 
 const cliente1 = new Cliente();
