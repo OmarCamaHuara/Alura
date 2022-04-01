@@ -1,0 +1,11 @@
+-- Para convertir una tabela em json e incluir "null" nos campos que nao tem dados
+FOR JSON AUTO, INCLUDE_NULL_VALUES
+
+-- Para retirar [] solo para quando o resultado do json so tem uma linha
+FOR JSON AUTO, WITHOUT_ARRAY_WRAPPER
+
+-- Json estruturado que comeca com {} o seja tem uma prodiedade principal
+FOR JSON AUTO, ROOT('Customer')
+
+-- Json representado a tabela grafica quando usamos joins
+FOR JSON PATH

@@ -1,0 +1,16 @@
+-- installar um arquivo tar.gz
+sudo dpkg -i aquivo.deb
+sudo apt-get install -f
+
+-- iniciar SQL Developer
+sqldeveloper
+
+-- iniciar intelliJ IDE
+~/Documents/ideaIC-2021.3.3/idea-IC-213.7172.25/bin$ sudo ./idea.sh
+
+-- instalar rpm
+sudo aliens arquivo.rpm
+sudo dpkg -i arquivo.dev
+
+-- procurar um programa
+whereis 'programa'

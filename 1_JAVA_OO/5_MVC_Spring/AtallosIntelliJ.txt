@@ -1,0 +1,31 @@
+-- Dasaparecer la barra de package
+ALT + 1
+
+-- Criar una class 
+ALT + insert
+
+-- Metodo principal
+psvm + ENTER
+
+-- print argumentos
+sout
+soutp
+
+-- duplicar linha
+CTRL + D
+
+-- Cria configuracao de execucao 
+CTRL + SHIFT + F10
+
+-- Execucao de codigo 
+SHIFT + F10
+
+-- navegar pelas avas 
+CTRL + ALT + <-- 
+CTRL + ALT + -->
+
+-- criar construtor na ava 
+ALT + insert
+
+-- criar variavel atributos tendo uma variavel ja criada
+CTRL + ALT + F
