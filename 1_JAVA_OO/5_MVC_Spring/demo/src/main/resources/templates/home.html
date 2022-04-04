@@ -6,23 +6,38 @@
     <title>Document</title>
 </head>
 <body>
-    <div th:each="pedido : ${pedidos}">
-        <div th:text="${pedido.productName}">Product's name</div>
-        <div>value <span>199,99</span></div>
-        <div>Delivery date <span th:text="${pedido.deliveryDate}">28/11/1991</span></div>
+    <div class="container">
+        <div class="card" th:each="pedido : ${pedidos}" >
+            <div class="card-header" th:text="${pedido.productName}" >Product's name</div>
 
-        <div>Product</div>
-        <div>
-        	<a th:href="${pedido.urlProduct}">Link</a>
-        </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12 col-sm-7 mb-3">
+                        <div class="row">
+                            <div class="col-md-5">value <span>199,99</span></div>
+                            <div class="col-md-7">Delivery date <span th:text="${pedido.deliveryDate}">28/11/1991</span></div>
+                        </div>
 
-        <div>Description</div>
-        <div>
-            <textarea th:text="${pedido.description}">Order Description</textarea>
-        </div>
-        <div>
-            <img th:src="${pedido.image}" alt="" >
+                        <div>Product</div>
+                        <div>
+                            <a th:href="${pedido.urlProduct}">Link</a>
+                        </div>
+
+                        <div>Description</div>
+                        <div>
+                            <textarea class="form-control" th:text="${pedido.description}">Order Description</textarea>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-5">
+                        <div>
+                            <img class="img-thumbnail" th:src="${pedido.image}" alt="" >
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
+
 </body>
 </html>

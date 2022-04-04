@@ -9,3 +9,8 @@ FOR JSON AUTO, ROOT('Customer')
 
 -- Json representado a tabela grafica quando usamos joins
 FOR JSON PATH
+
+-- para saver se um campo es um JSON se o formato esta certo
+ISJSON({"nome":"Domar"}) ==> 1 ou 0
+
+
