@@ -1,0 +1,3 @@
+-- linea para trazer a todo mundo
+" op' or 'X' = 'X "
+

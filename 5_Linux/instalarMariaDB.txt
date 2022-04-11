@@ -1,0 +1,36 @@
+Comandos:
+sudo apt update
+
+-- configuration ==> do you want continue Y
+sudo apt install mariadb-server
+
+-- configuration ==> senha == admin 
+                        change the root password N 
+                        Remove anonymous users Y 
+                        Disallow root login remotely Y 
+                        Remove test database and access to it Y 
+                        Reload privilege table now Y 
+
+sudo mysql_secure_installation
+
+admin
+
+-- para rodar mariaDB
+sudo mariadb ou sudo mysql -uroot -pInfo@1234
+
+-- agrecentar un novo usuario para conseguir conectar en la base
+GRANT ALL ON *.* TO 'admin'@'localhost' IDENTIFIED BY 'Info@1234' WITH GRANT OPTION;
+GRANT ALL ON *.* TO 'suporte'@'%' IDENTIFIED BY 'Info@1234' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+
+-- resetear 
+sudo service mysql restart
+
+-- modificacao do bind-adress para 0.0.0.0  despues resetar
+sudo nano /etc/mysql/mariadb.conf.d/50-server.cnf
+para liberar acesso de outros computadores, mude o bind-address
+para 0.0.0.0
+tambem acrecentar skip-name-resolve 
+ele vai conectar mas rapido todabia
+
+skip-name-resolve (conflitos dns /request de ip)

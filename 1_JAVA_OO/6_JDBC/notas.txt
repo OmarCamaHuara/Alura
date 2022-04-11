@@ -1,0 +1,14 @@
+-- Todas elas sao interfaces
+java.sql.Connection, java.sql.Statement e java.sql.ResultSet 
+
+-- evitar SQL injection e setando as variaves
+PreparedStament e setString
+
+-- auto close con o try == So declarando dentro do try tiene ja o close
+
+-- Data Access Object declarando    
+    - Para cada classe de domino, existe um DAO 
+        Ex. 
+            A classe Produto possui ProdutoDao
+    - Todos os metodos JDBC relacionados com o produto devem estar encapsulados no ProdutoDao
+    
