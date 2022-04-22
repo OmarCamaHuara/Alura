@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -18,7 +20,6 @@ import org.springframework.web.util.UriComponentsBuilder;
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 import java.net.URI;
-import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -34,9 +35,8 @@ public class TopicsController {
     @GetMapping
     // @ResponseBody = agora va junto com ao Controller acima
     public Page<TopicDTO> lista(@RequestParam(required = false) String nameCurso,
-                                @RequestParam int page,
-                                @RequestParam int amount){
-        Pageable pageable = PageRequest.of(page, amount);
+                                @PageableDefault(sort = "id", direction = Sort.Direction.DESC, page = 0, size = 0) Pageable pageable){
+
 
         if (nameCurso == null) {
             Page<Topic> topics = topicRepository.findAll(pageable);
