@@ -8,6 +8,8 @@ import br.com.alura.forum.controller.form.ApdateTopicForm;
 import br.com.alura.forum.controller.form.TopicForm;
 import br.com.alura.forum.modelo.Topic;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -32,12 +34,11 @@ public class TopicsController {
     @Autowired
     private CursoRepository cursoRepository;
 
-    @GetMapping
     // @ResponseBody = agora va junto com ao Controller acima
+    @GetMapping
+    @Cacheable(value = "ListaDeTopics")
     public Page<TopicDTO> lista(@RequestParam(required = false) String nameCurso,
-                                @PageableDefault(sort = "id", direction = Sort.Direction.DESC, page = 0, size = 0) Pageable pageable){
-
-
+                                @PageableDefault(sort = "id", direction = Sort.Direction.ASC, page = 0, size = 2) Pageable pageable){
         if (nameCurso == null) {
             Page<Topic> topics = topicRepository.findAll(pageable);
             return TopicDTO.convertir(topics);
@@ -61,6 +62,7 @@ public class TopicsController {
 
     @PostMapping
     @Transactional
+    @CacheEvict(value = "ListaDeTopics", allEntries = true)
     public ResponseEntity<TopicDTO> cadastrar(@RequestBody @Valid TopicForm form, UriComponentsBuilder uriBuilder){
         Topic topic = form.convert(cursoRepository);
         topicRepository.save(topic);
@@ -70,6 +72,7 @@ public class TopicsController {
     }
 
     @GetMapping("/{id}")
+    @CacheEvict(value = "ListaDeTopics", allEntries = true)
     public ResponseEntity<DetalhesDoTopicDTO> detalhar(@PathVariable Long id){
         Optional<Topic> topic = topicRepository.findById(id);
         if (topic.isPresent())
@@ -79,6 +82,7 @@ public class TopicsController {
 
     @PutMapping("/{id}")
     @Transactional
+    @CacheEvict(value = "ListaDeTopics", allEntries = true)
     public ResponseEntity<TopicDTO> apdate(@PathVariable Long id, @RequestBody @Valid ApdateTopicForm form){
         Optional<Topic> opcional = topicRepository.findById(id);
         if (opcional.isPresent()) {
@@ -90,6 +94,7 @@ public class TopicsController {
 
     @DeleteMapping("/{id}")
     @Transactional
+    @CacheEvict(value = "ListaDeTopics", allEntries = true)
     public ResponseEntity remove(@PathVariable Long id){
         Optional<Topic> opcional = topicRepository.findById(id);
         if (opcional.isPresent()) {
