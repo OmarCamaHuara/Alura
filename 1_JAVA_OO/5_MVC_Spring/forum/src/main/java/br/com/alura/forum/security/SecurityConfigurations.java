@@ -1,5 +1,6 @@
 package br.com.alura.forum.security;
 
+import br.com.alura.forum.Repository.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,6 +13,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @EnableWebSecurity
 @Configuration
@@ -19,6 +21,12 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private AutencationService autenticationService;
+
+    @Autowired
+    private TokenService tokenService;
+
+    @Autowired
+    private UsersRepository usersRepository;
 
     @Override
     @Bean
@@ -44,7 +52,8 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 //.and().formLogin(); nao vamos a utilizar mais porque agora a autenticacao vai ser por token
                 .and().csrf().disable() // precisa esta desabilitado porque nossa autenticacao e por token
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS); // avisando que nossa autenticacao vai ser stateless
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and().addFilterBefore(new AuthenticationViaToken(tokenService, usersRepository), UsernamePasswordAuthenticationFilter.class); // avisando que nossa autenticacao vai ser stateless
     }
 
     // Configuracoes de recursos estaticos (js, css, img, etc.)
