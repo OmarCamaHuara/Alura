@@ -49,11 +49,12 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "/topics").permitAll()
                 .antMatchers(HttpMethod.GET, "/topics/*").permitAll()
                 .antMatchers(HttpMethod.POST, "/auth").permitAll()
+                .antMatchers(HttpMethod.POST, "/actuator/**").permitAll()
                 .anyRequest().authenticated()
                 //.and().formLogin(); nao vamos a utilizar mais porque agora a autenticacao vai ser por token
                 .and().csrf().disable() // precisa esta desabilitado porque nossa autenticacao e por token
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and().addFilterBefore(new AuthenticationViaToken(tokenService, usersRepository), UsernamePasswordAuthenticationFilter.class); // avisando que nossa autenticacao vai ser stateless
+                .and().addFilterBefore(new AuthenticationViaTokenFilter(tokenService, usersRepository), UsernamePasswordAuthenticationFilter.class); // avisando que nossa autenticacao vai ser stateless
     }
 
     // Configuracoes de recursos estaticos (js, css, img, etc.)
