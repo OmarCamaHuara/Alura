@@ -29,5 +29,7 @@ public class Main {
         System.out.println(fun1.getDateOfBirth());
         System.out.println(fun2.getName());
         System.out.println(fun2.getDateOfBirth());
+
+
     }
 }
