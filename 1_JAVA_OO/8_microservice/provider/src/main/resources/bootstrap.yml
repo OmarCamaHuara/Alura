@@ -1,0 +1,10 @@
+
+spring:
+  application:
+    name: 'provider'
+  profiles:
+    active: proc
+  cloud:
+    config:
+      uri: http://localhost:8888/
+      

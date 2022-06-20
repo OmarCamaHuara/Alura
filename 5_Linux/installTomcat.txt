@@ -1,0 +1,12 @@
+
+- sudo apt install tomcat9 tomcat9-admin
+- sudo systemctl status tomcat9
+- sudo systemctl restart tomcat9
+
+- PORTAS
+ss -ltn
+
+-- trocar a porta do eclipse em projeto mvn
+application.properties
+- server.port = 8090
+

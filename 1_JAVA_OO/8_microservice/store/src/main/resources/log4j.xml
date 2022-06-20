@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="warn" name="MyApp" packages="">
+	<appender name="SYSLOG" class="org.apache.log4j.net.SyslogAppender">
+	  <errorHandler/>
+	  <param name="Facility" value="LOCAL7"/>
+	  <param name="FacilityPrinting" value="false"/>
+	  <param name="Header" value="true"/>
+	  <param name="SyslogHost" value="logs3.papertrailapp.com:20029"/>
+	  <param name="ConversionPattern" value="%p: %c{2} %x %m %n"/>
+	</appender>
+	<Appenders>
+	  <Syslog name="SYSLOG-TCP" host="logsN.papertrailapp.com" port="XXXXX"
+	    protocol="TCP" appName="MyApp" mdcId="mdc"
+	    facility="LOCAL0" enterpriseNumber="18060" newLine="true"
+	    format="RFC5424" ignoreExceptions="false" exceptionPattern="%throwable{full}">
+	  </Syslog>
+	</Appenders>
+	<Loggers>
+	  <Root level="info">
+	    <AppenderRef ref="SYSLOG-TCP"/>
+	  </Root>
+	</Loggers>
+</Configuration>

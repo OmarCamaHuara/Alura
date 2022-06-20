@@ -1,0 +1,8 @@
+spring:
+  datasource: 
+    password: Info@1234
+    username: admin
+    url: jdbc:mysql://localhost:3306/store
+  jpa:
+    hibernate:
+      ddl-auto: create

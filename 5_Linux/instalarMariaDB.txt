@@ -1,6 +1,8 @@
 Comandos:
 sudo apt update
 
+sudo apt install mariadb-server
+
 -- configuration ==> do you want continue Y
 sudo apt install mariadb-server
 
