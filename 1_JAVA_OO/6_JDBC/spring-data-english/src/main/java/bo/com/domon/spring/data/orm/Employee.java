@@ -27,7 +27,7 @@ public class Employee {
 	
 	private String name;
 	private String cpf;
-	private Double salario;
+	private Double salary;
 	private LocalDate contractDate;
 	
 	@ManyToOne
@@ -67,12 +67,12 @@ public class Employee {
 		this.cpf = cpf;
 	}
 
-	public Double getSalario() {
-		return salario;
+	public Double getSalary() {
+		return salary;
 	}
 
-	public void setSalario(Double salario) {
-		this.salario = salario;
+	public void setSalary(Double salary) {
+		this.salary = salary;
 	}
 
 	public LocalDate getContractDate() {
@@ -101,7 +101,7 @@ public class Employee {
 
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", name=" + name + ", cpf=" + cpf + ", salario=" + salario + ", contractDate="
+		return "Employee [id=" + id + ", name=" + name + ", cpf=" + cpf + ", salario=" + salary + ", contractDate="
 				+ contractDate + ", positionl=" + positionl + ", workUnit=" + workUnit + "]";
 	}
 }

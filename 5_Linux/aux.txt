@@ -1,0 +1,11 @@
+async function deleteUser(id){
+    const request = await fetch('api/user/' + id, {
+        method: 'DELETE'
+        headers: {
+            'Accept' : 'application/json',
+            'Content-Type' : 'application/json'
+        }
+    });
+
+
+let bottonToDelete = '<a href="#" onclick="deleteUser('+ user.id +')" class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></a>';

@@ -1,0 +1,7 @@
+PARA SAVER QUE ESTA RODANDO NA PORTA XXXX
+*****************************************
+- sudo netstat -anp | grep ':80'
+
+PARA DELETAR O PROCESO EM UMA PORTA 
+************************************
+- sudo kill -9 idDoPorceso

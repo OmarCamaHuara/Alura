@@ -1,0 +1,8 @@
+PARA SAVER QUE ESTA RODANDO NA PORTA XXXX
+*****************************************
+- netstat -ano | findstr LISTENING | findstr 8080
+
+PARA DELETAR O PROCESO EM UMA PORTA 
+************************************
+- taskkill -PID 11808 -F
+

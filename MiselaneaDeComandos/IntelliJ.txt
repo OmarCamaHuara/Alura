@@ -1,0 +1,5 @@
+TROCURAR NO PROJETO TODO 
+************************
+- seleccionar a nome da variavel, palabra, etc.
+- ctrl + shift + F
+
