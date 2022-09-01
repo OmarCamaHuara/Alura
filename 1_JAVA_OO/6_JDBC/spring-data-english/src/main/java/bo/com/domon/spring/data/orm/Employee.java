@@ -29,18 +29,14 @@ public class Employee {
 	private String cpf;
 	private Double salary;
 	private LocalDate contractDate;
-	
 	@ManyToOne
 	@JoinColumn(name = "position_id", nullable = false)
 	private Position positionl;
-	
 	@Fetch(FetchMode.SELECT)
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "employee_units", joinColumns = {
 			@JoinColumn(name = "fk_employee")},
-	inverseJoinColumns = {
-			@JoinColumn(name = "fk_unit")
-	})
+	inverseJoinColumns = { @JoinColumn(name = "fk_unit")})
 	private List<WorkUnit> workUnit;
 
 	public Integer getId() {

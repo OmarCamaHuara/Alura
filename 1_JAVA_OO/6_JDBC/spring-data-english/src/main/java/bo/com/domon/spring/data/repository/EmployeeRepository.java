@@ -11,6 +11,7 @@ import bo.com.domon.spring.data.orm.Employee;
 
 @Repository
 public interface EmployeeRepository extends CrudRepository<Employee, Integer> {
+	
 	List<Employee> findByName(String name);
 	
 	@Query("SELECT f FROM Employee f WHERE f.name = :name"

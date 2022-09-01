@@ -1,6 +1,5 @@
 package bo.com.domon.spring.data.service;
 
-import java.util.Optional;
 import java.util.Scanner;
 
 import org.springframework.stereotype.Service;
@@ -69,11 +68,13 @@ public class CrudPositionService {
 		positionRepository.save(position);
 		System.out.println("Updated...");
 	}
+	
 	private void jobList() {
 		System.out.println("Job list");
 		Iterable<Position> positions = positionRepository.findAll();
 		positions.forEach(position -> System.out.println(position.toString()));
 	}
+	
 	private void deleteJob(Scanner scanner) {
 		System.out.println("ID");
 		int id = scanner.nextInt();

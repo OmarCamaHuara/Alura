@@ -1,0 +1,17 @@
+**** Actived when running test
+- mvn verify
+
+
+**** trocar porta
+- quarkus.http.port=8090
+
+**** para startar a app ****
+- mvn compile quarkus:dev
+
+**** para rodar app
+- curl localhost:8090/time
+- while true
+> do curl localhost:8090/time
+> done
+
+
