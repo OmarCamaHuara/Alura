@@ -14,4 +14,7 @@
 > do curl localhost:8090/time
 > done
 
+**** Configuarar quarkus com especificacoes Servelet en vez de Vert.x
+- mvn quarkus:add-extension -Dextensions="quarkus-undertow"
+
 
